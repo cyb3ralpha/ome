@@ -1,0 +1,9 @@
+{
+  "name": "omegle-fullstack",
+  "private": true,
+  "scripts": {
+    "install": "cd client && npm ci",
+    "build": "cd client && npm run build",
+    "vercel-build": "npm run build"
+  }
+}
