@@ -31,8 +31,9 @@ function start() {
     });
 }
 
-// connect ot server
-const socket = io('http://localhost:8000');
+// connect to server (use Vite env variable VITE_BACKEND_URL)
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000';
+const socket = io(BACKEND_URL);
 
 
 // disconnectin event

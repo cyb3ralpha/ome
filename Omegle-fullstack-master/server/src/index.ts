@@ -1,10 +1,13 @@
 import express from 'express';
 const app = express();
 import cors from 'cors';
-app.use(cors());
+// Read configuration from environment
+const PORT = process.env.PORT || 8000;
+const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || '*';
+app.use(cors({ origin: CLIENT_ORIGIN }));
 import { Server } from 'socket.io';
-const server = app.listen('8000', () => console.log('Server is up, 8000'));
-const io = new Server(server, { cors: { origin: '*' } });
+const server = app.listen(PORT, () => console.log(`Server is up on ${PORT}`));
+const io = new Server(server, { cors: { origin: CLIENT_ORIGIN } });
 import { handelStart, handelDisconnect, getType } from './lib';
 import { GetTypesResult, room } from './types';
 
